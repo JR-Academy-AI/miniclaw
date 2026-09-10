@@ -1,0 +1,765 @@
+{
+  "scope": "M0 offline verification; no SDK calls and no billing verification",
+  "sourceGenerator": "fixtures/claude-code/spike/spike.mjs",
+  "missingRealErrorEvidence": [
+    "UNAUTHENTICATED_NO_CREDENTIALS",
+    "QUOTA_EXHAUSTED",
+    "RATE_LIMITED",
+    "OVERLOADED"
+  ],
+  "fixtures": {
+    "stream-multiturn": {
+      "source": "fixtures/claude-code/stream-multiturn.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "26c9db0ca79e52a8fc6863b889a360d7a9bd0a62b4fd9be8f1f22853f7fb4887",
+      "lines": 32,
+      "assistantEvents": 4,
+      "uniqueAssistantIds": 2,
+      "naiveAssistantUsage": {
+        "input_tokens": 40,
+        "cache_creation_input_tokens": 35490,
+        "cache_read_input_tokens": 35290,
+        "output_tokens": 16
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 17745,
+        "cache_read_input_tokens": 17645,
+        "output_tokens": 8
+      },
+      "streamUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 17745,
+        "cache_read_input_tokens": 17645,
+        "output_tokens": 89
+      },
+      "requests": [
+        {
+          "id": "msg_011CeugWECSwwoyDiTA8NiVJ",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 17645,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 45
+          },
+          "finalized": true
+        },
+        {
+          "id": "msg_011CeugWKXfipCaabMuofBpi",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 100,
+            "cache_read_input_tokens": 17645,
+            "output_tokens": 44
+          },
+          "finalized": true
+        }
+      ],
+      "textDeltaCount": 3,
+      "thinkingDeltaCount": 2,
+      "nonemptyThinkingDeltaCount": 0,
+      "toolCalls": [],
+      "rateLimitStatuses": [
+        "allowed"
+      ],
+      "assistantErrors": [],
+      "results": [
+        {
+          "line": 17,
+          "sessionId": "df3e3be1-fd6b-4dee-b315-4ee4e16fdc16",
+          "subtype": "success",
+          "isError": false,
+          "terminalReason": "completed",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 17645,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 45
+          },
+          "cumulativeEstimatedUsd": 0.03648,
+          "estimatedUsdDelta": 0.03648,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 910,
+              "outputTokens": 56,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 17645,
+              "webSearchRequests": 0,
+              "costUSD": 0.03648,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 38,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 1,
+          "text": "pong"
+        },
+        {
+          "line": 32,
+          "sessionId": "df3e3be1-fd6b-4dee-b315-4ee4e16fdc16",
+          "subtype": "success",
+          "isError": false,
+          "terminalReason": "completed",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 100,
+            "cache_read_input_tokens": 17645,
+            "output_tokens": 44
+          },
+          "cumulativeEstimatedUsd": 0.0386745,
+          "estimatedUsdDelta": 0.0021945,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 920,
+              "outputTokens": 100,
+              "cacheReadInputTokens": 17645,
+              "cacheCreationInputTokens": 17745,
+              "webSearchRequests": 0,
+              "costUSD": 0.0386745,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 74,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 1,
+          "text": "pong"
+        }
+      ]
+    },
+    "thinking": {
+      "source": "fixtures/claude-code/thinking.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "77bb5bf55db17597c4731ad8a790fbe7deb845aeecc85fae9982656c59a22b3e",
+      "lines": 217,
+      "assistantEvents": 2,
+      "uniqueAssistantIds": 1,
+      "naiveAssistantUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 3086,
+        "cache_read_input_tokens": 32224,
+        "output_tokens": 8
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 10,
+        "cache_creation_input_tokens": 1543,
+        "cache_read_input_tokens": 16112,
+        "output_tokens": 4
+      },
+      "streamUsage": {
+        "input_tokens": 10,
+        "cache_creation_input_tokens": 1543,
+        "cache_read_input_tokens": 16112,
+        "output_tokens": 415
+      },
+      "requests": [
+        {
+          "id": "msg_011Ceuh8oZAD8d4DbP97o59w",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 1543,
+            "cache_read_input_tokens": 16112,
+            "output_tokens": 415
+          },
+          "finalized": true
+        }
+      ],
+      "textDeltaCount": 38,
+      "thinkingDeltaCount": 82,
+      "nonemptyThinkingDeltaCount": 82,
+      "toolCalls": [],
+      "rateLimitStatuses": [
+        "allowed_warning"
+      ],
+      "assistantErrors": [],
+      "results": [
+        {
+          "line": 217,
+          "sessionId": "6cef707f-deeb-41d1-9b8e-c80d2254481b",
+          "subtype": "success",
+          "isError": false,
+          "terminalReason": "completed",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 1543,
+            "cache_read_input_tokens": 16112,
+            "output_tokens": 415
+          },
+          "cumulativeEstimatedUsd": 0.0077542,
+          "estimatedUsdDelta": 0.0077542,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 917,
+              "outputTokens": 428,
+              "cacheReadInputTokens": 16112,
+              "cacheCreationInputTokens": 1543,
+              "webSearchRequests": 0,
+              "costUSD": 0.0077542,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 288,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 1,
+          "text": "Let me check if 391 is prime by testing divisibility:\n\n- Not even (ends in 1)\n- Sum of digits: 3+9+1 = 13 (not divisible by 3)\n- Not divisible by 5, 7, or 11\n- Testing 17: 391 ÷ 17 = 23 ✓\n\nSince 391 = 17 × 23, it has factors other than 1 and itself.\n\n**No**, 391 is not prime."
+        }
+      ]
+    },
+    "gate": {
+      "source": "fixtures/claude-code/gate.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "47a60359be88fc40d2992dfcc9e64c6a7016c27b3d8816fa07ba1b8e3f12dbfa",
+      "lines": 218,
+      "assistantEvents": 14,
+      "uniqueAssistantIds": 5,
+      "naiveAssistantUsage": {
+        "input_tokens": 118,
+        "cache_creation_input_tokens": 58750,
+        "cache_read_input_tokens": 209810,
+        "output_tokens": 44
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 42,
+        "cache_creation_input_tokens": 19665,
+        "cache_read_input_tokens": 76410,
+        "output_tokens": 16
+      },
+      "streamUsage": {
+        "input_tokens": 42,
+        "cache_creation_input_tokens": 19665,
+        "cache_read_input_tokens": 76410,
+        "output_tokens": 873
+      },
+      "requests": [
+        {
+          "id": "msg_011CeugskjL9UVph9cqcRzNZ",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 18748,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 216
+          },
+          "finalized": true
+        },
+        {
+          "id": "msg_011CeugswPX3Lk3hGjXKDHJB",
+          "usage": {
+            "input_tokens": 8,
+            "cache_creation_input_tokens": 275,
+            "cache_read_input_tokens": 18748,
+            "output_tokens": 147
+          },
+          "finalized": true
+        },
+        {
+          "id": "msg_011Ceugt8VX5LouyKxJhfK6p",
+          "usage": {
+            "input_tokens": 8,
+            "cache_creation_input_tokens": 196,
+            "cache_read_input_tokens": 19023,
+            "output_tokens": 144
+          },
+          "finalized": true
+        },
+        {
+          "id": "msg_011CeugtJuaZhwfa97LZcEcT",
+          "usage": {
+            "input_tokens": 8,
+            "cache_creation_input_tokens": 201,
+            "cache_read_input_tokens": 19219,
+            "output_tokens": 184
+          },
+          "finalized": true
+        },
+        {
+          "id": "msg_011CeugtTzn6EHiiEZiXjSRp",
+          "usage": {
+            "input_tokens": 8,
+            "cache_creation_input_tokens": 245,
+            "cache_read_input_tokens": 19420,
+            "output_tokens": 182
+          },
+          "finalized": true
+        }
+      ],
+      "textDeltaCount": 72,
+      "thinkingDeltaCount": 6,
+      "nonemptyThinkingDeltaCount": 0,
+      "toolCalls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_017ZUxdj8Q5mzxmYPdKRxgik",
+          "name": "Bash",
+          "input": {
+            "command": "echo step1",
+            "description": "Run echo command for step1"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01SBaBu6BsNVCJu2swGzQFTc",
+          "name": "Bash",
+          "input": {
+            "command": "echo step2",
+            "description": "Run echo command for step2"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01JNtjduQgcxT1kXVYGr62WJ",
+          "name": "Read",
+          "input": {
+            "file_path": "<cwd>/note.txt"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        },
+        {
+          "type": "tool_use",
+          "id": "toolu_01TYGntgstTSYf2riFK6qHy1",
+          "name": "Write",
+          "input": {
+            "file_path": "<cwd>/out.txt",
+            "content": "x"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "rateLimitStatuses": [
+        "allowed_warning"
+      ],
+      "assistantErrors": [],
+      "results": [
+        {
+          "line": 218,
+          "sessionId": "eb26b289-5b31-4149-a0f1-0af7c4461067",
+          "subtype": "success",
+          "isError": false,
+          "terminalReason": "completed",
+          "usage": {
+            "input_tokens": 42,
+            "cache_creation_input_tokens": 19665,
+            "cache_read_input_tokens": 76410,
+            "output_tokens": 873
+          },
+          "cumulativeEstimatedUsd": 0.052422,
+          "estimatedUsdDelta": 0.052422,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 1016,
+              "outputTokens": 887,
+              "cacheReadInputTokens": 76410,
+              "cacheCreationInputTokens": 19665,
+              "webSearchRequests": 0,
+              "costUSD": 0.052422,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 257,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 5,
+          "text": "Step 4 was denied.\n\n---\n\n## Summary of Step Outcomes:\n\n| Step | Action | Outcome |\n|------|--------|---------|\n| 1 | Run `echo step1` | ❌ Denied |\n| 2 | Run `echo step2` | ✅ Success - output: `step2` |\n| 3 | Read `note.txt` | ✅ Success - content: `the secret word is walrus` |\n| 4 | Write `out.txt` with content `x` | ❌ Denied |"
+        }
+      ]
+    },
+    "interrupt": {
+      "source": "fixtures/claude-code/interrupt.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "cff9ca1e0686429d24cab2d66f2d667345ddd6b98313f136bd0aa75426ff1f98",
+      "lines": 51,
+      "assistantEvents": 4,
+      "uniqueAssistantIds": 2,
+      "naiveAssistantUsage": {
+        "input_tokens": 40,
+        "cache_creation_input_tokens": 3530,
+        "cache_read_input_tokens": 67538,
+        "output_tokens": 16
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 1765,
+        "cache_read_input_tokens": 33769,
+        "output_tokens": 8
+      },
+      "streamUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 1765,
+        "cache_read_input_tokens": 33769,
+        "output_tokens": 47
+      },
+      "requests": [
+        {
+          "id": "msg_011Ceuh54RVmHVduTcpR17uh",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 1545,
+            "cache_read_input_tokens": 16112,
+            "output_tokens": 4
+          },
+          "finalized": false
+        },
+        {
+          "id": "msg_011Ceuh5ELJnRYqkb6EVPceB",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 220,
+            "cache_read_input_tokens": 17657,
+            "output_tokens": 43
+          },
+          "finalized": true
+        }
+      ],
+      "textDeltaCount": 21,
+      "thinkingDeltaCount": 3,
+      "nonemptyThinkingDeltaCount": 0,
+      "toolCalls": [],
+      "rateLimitStatuses": [
+        "allowed_warning"
+      ],
+      "assistantErrors": [],
+      "results": [
+        {
+          "line": 36,
+          "sessionId": "8d54912c-b0c2-482f-ba00-6949de2cb74a",
+          "subtype": "error_during_execution",
+          "isError": true,
+          "terminalReason": "aborted_streaming",
+          "usage": {
+            "input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 0
+          },
+          "cumulativeEstimatedUsd": 0.000985,
+          "estimatedUsdDelta": 0.000985,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 910,
+              "outputTokens": 15,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0,
+              "webSearchRequests": 0,
+              "costUSD": 0.000985,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 0,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 2,
+          "text": null
+        },
+        {
+          "line": 51,
+          "sessionId": "8d54912c-b0c2-482f-ba00-6949de2cb74a",
+          "subtype": "success",
+          "isError": false,
+          "terminalReason": "completed",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 220,
+            "cache_read_input_tokens": 17657,
+            "output_tokens": 43
+          },
+          "cumulativeEstimatedUsd": 0.0034157,
+          "estimatedUsdDelta": 0.0024307,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 920,
+              "outputTokens": 58,
+              "cacheReadInputTokens": 17657,
+              "cacheCreationInputTokens": 220,
+              "webSearchRequests": 0,
+              "costUSD": 0.0034157,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 34,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 1,
+          "text": "still-alive"
+        }
+      ]
+    },
+    "interrupt-hook": {
+      "source": "fixtures/claude-code/interrupt-hook.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "2a86d5bb0bb749ab0cfb7aa8c6283ef1848a3f5870146a19028ad6fb9a969834",
+      "lines": 40,
+      "assistantEvents": 4,
+      "uniqueAssistantIds": 2,
+      "naiveAssistantUsage": {
+        "input_tokens": 40,
+        "cache_creation_input_tokens": 3564,
+        "cache_read_input_tokens": 67518,
+        "output_tokens": 14
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 1782,
+        "cache_read_input_tokens": 33759,
+        "output_tokens": 7
+      },
+      "streamUsage": {
+        "input_tokens": 20,
+        "cache_creation_input_tokens": 1782,
+        "cache_read_input_tokens": 33759,
+        "output_tokens": 159
+      },
+      "requests": [
+        {
+          "id": "msg_011Ceuh547eGSKAp6mbenYHA",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 1535,
+            "cache_read_input_tokens": 16112,
+            "output_tokens": 114
+          },
+          "finalized": true
+        },
+        {
+          "id": "msg_011Ceuh5Lcpg9838djKNdF7J",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 247,
+            "cache_read_input_tokens": 17647,
+            "output_tokens": 45
+          },
+          "finalized": true
+        }
+      ],
+      "textDeltaCount": 2,
+      "thinkingDeltaCount": 2,
+      "nonemptyThinkingDeltaCount": 0,
+      "toolCalls": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01Xo28ArqcwJWP75s5gva6hF",
+          "name": "Bash",
+          "input": {
+            "command": "echo pending",
+            "description": "Echo the word pending"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "rateLimitStatuses": [
+        "allowed_warning"
+      ],
+      "assistantErrors": [],
+      "results": [
+        {
+          "line": 24,
+          "sessionId": "50d1213c-1efa-4a64-8acc-ab8bfc603e36",
+          "subtype": "error_during_execution",
+          "isError": true,
+          "terminalReason": "aborted_tools",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 1535,
+            "cache_read_input_tokens": 16112,
+            "output_tokens": 114
+          },
+          "cumulativeEstimatedUsd": 0.006206199999999999,
+          "estimatedUsdDelta": 0.0062062,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 910,
+              "outputTokens": 123,
+              "cacheReadInputTokens": 16112,
+              "cacheCreationInputTokens": 1535,
+              "webSearchRequests": 0,
+              "costUSD": 0.006206199999999999,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 38,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 3,
+          "text": null
+        },
+        {
+          "line": 40,
+          "sessionId": "50d1213c-1efa-4a64-8acc-ab8bfc603e36",
+          "subtype": "success",
+          "isError": false,
+          "terminalReason": "completed",
+          "usage": {
+            "input_tokens": 10,
+            "cache_creation_input_tokens": 247,
+            "cache_read_input_tokens": 17647,
+            "output_tokens": 45
+          },
+          "cumulativeEstimatedUsd": 0.0086999,
+          "estimatedUsdDelta": 0.0024937,
+          "modelUsage": {
+            "claude-haiku-4-5-20251001": {
+              "inputTokens": 920,
+              "outputTokens": 168,
+              "cacheReadInputTokens": 33759,
+              "cacheCreationInputTokens": 1782,
+              "webSearchRequests": 0,
+              "costUSD": 0.0086999,
+              "contextWindow": 200000,
+              "maxOutputTokens": 32000,
+              "thinkingTokens": 74,
+              "canonicalModel": "claude-haiku-4-5",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          },
+          "numTurns": 1,
+          "text": "still-alive"
+        }
+      ]
+    },
+    "auth-invalid-key": {
+      "source": "fixtures/claude-code/auth-invalid-key.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "acb0d78fddcef799070b2389bc0576d01872620d7700dbf2a81967f5e375a1ac",
+      "lines": 6,
+      "assistantEvents": 1,
+      "uniqueAssistantIds": 1,
+      "naiveAssistantUsage": {
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0
+      },
+      "streamUsage": {
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0
+      },
+      "requests": [],
+      "textDeltaCount": 0,
+      "thinkingDeltaCount": 0,
+      "nonemptyThinkingDeltaCount": 0,
+      "toolCalls": [],
+      "rateLimitStatuses": [],
+      "assistantErrors": [
+        {
+          "error": "authentication_failed",
+          "isApiError": true,
+          "text": "Failed to authenticate. API Error: 401 API key is invalid."
+        }
+      ],
+      "results": [
+        {
+          "line": 6,
+          "sessionId": "4adc63e4-f86f-4d35-b927-15124c46eea2",
+          "subtype": "success",
+          "isError": true,
+          "terminalReason": "api_error",
+          "usage": {
+            "input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 0
+          },
+          "cumulativeEstimatedUsd": 0,
+          "estimatedUsdDelta": 0,
+          "modelUsage": {},
+          "numTurns": 1,
+          "text": "Failed to authenticate. API Error: 401 API key is invalid."
+        }
+      ]
+    },
+    "bad-model": {
+      "source": "fixtures/claude-code/bad-model.jsonl",
+      "evidenceKind": "existing-real-sdk-capture",
+      "sha256": "257fecd27e5c57f47c676cb44da694e18d1146a624c8a4932ba120f39e057329",
+      "lines": 4,
+      "assistantEvents": 1,
+      "uniqueAssistantIds": 1,
+      "naiveAssistantUsage": {
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0
+      },
+      "deduplicatedAssistantSnapshotUsage": {
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0
+      },
+      "streamUsage": {
+        "input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 0
+      },
+      "requests": [],
+      "textDeltaCount": 0,
+      "thinkingDeltaCount": 0,
+      "nonemptyThinkingDeltaCount": 0,
+      "toolCalls": [],
+      "rateLimitStatuses": [],
+      "assistantErrors": [
+        {
+          "error": "model_not_found",
+          "isApiError": true,
+          "text": "There's an issue with the selected model (claude-does-not-exist-9). It may not exist or you may not have access to it."
+        }
+      ],
+      "results": [
+        {
+          "line": 4,
+          "sessionId": "202e2e07-52d1-4daa-910a-119bf0fa80f6",
+          "subtype": "success",
+          "isError": true,
+          "terminalReason": "api_error",
+          "usage": {
+            "input_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 0
+          },
+          "cumulativeEstimatedUsd": 0,
+          "estimatedUsdDelta": 0,
+          "modelUsage": {},
+          "numTurns": 1,
+          "text": "There's an issue with the selected model (claude-does-not-exist-9). It may not exist or you may not have access to it."
+        }
+      ]
+    }
+  }
+}

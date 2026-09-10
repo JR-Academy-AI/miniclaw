@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-09-10T11:42:52.209Z",
+  "observations": [
+    {
+      "name": "existing-login",
+      "exitCode": 0,
+      "signal": null,
+      "loggedIn": true,
+      "authMethod": "claude.ai",
+      "apiProvider": "firstParty",
+      "subscriptionType": "max",
+      "stderrPresent": false
+    },
+    {
+      "name": "isolated-config-dir",
+      "exitCode": 1,
+      "signal": null,
+      "loggedIn": false,
+      "authMethod": "none",
+      "apiProvider": "firstParty",
+      "stderrPresent": false
+    }
+  ]
+}

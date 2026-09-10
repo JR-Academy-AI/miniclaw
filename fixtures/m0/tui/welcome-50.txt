@@ -1,0 +1,11 @@
+(\/)(°,,°)(\/) miniclaw
+
+Good evening, lightman · v0.1.0
+✓ runtime  ready · demo
+  ✓ Simulated engine; no provider requests.
+
+╭────────────────────────────────────────────────╮
+│ ❯   Ask your agent anything…                   │
+╰────────────────────────────────────────────────╯
+default model · usage — · cost —
+enter send · esc stop · ? /help

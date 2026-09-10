@@ -1,0 +1,4 @@
+{"timestamp": "2026-09-10T11:49:28.036Z", "type": "user.message", "text": "Reply with exactly: miniclaw connected"}
+{"timestamp": "2026-09-10T11:49:29.199Z", "type": "session.ready", "sessionId": "<runtime-session>", "model": "claude-haiku-4-5-20251001", "cwd": "<acceptance-workspace>"}
+{"timestamp": "2026-09-10T11:49:30.011Z", "type": "usage.updated", "usage": null, "costUsd": 0, "completeness": "unavailable"}
+{"timestamp": "2026-09-10T11:49:30.020Z", "type": "error", "error": {"kind": "QUOTA_EXHAUSTED", "message": "You've hit your session limit \u00b7 resets 10:50pm (Australia/Brisbane)", "hint": "Wait for your usage limit to reset, or check your plan with /usage in `claude`.", "resetAt": "2026-09-10T12:50:00.000Z"}}

@@ -1,0 +1,60 @@
+{
+  "name": "flag-env",
+  "timestamp": "2026-09-10T11:42:08.962Z",
+  "events": [
+    {
+      "type": "init",
+      "tools": [
+        "Task",
+        "Bash",
+        "CronCreate",
+        "CronDelete",
+        "CronList",
+        "Edit",
+        "EnterWorktree",
+        "ExitWorktree",
+        "ListAgents",
+        "NotebookEdit",
+        "Read",
+        "ReportFindings",
+        "ScheduleWakeup",
+        "SendMessage",
+        "Skill",
+        "TaskCreate",
+        "TaskGet",
+        "TaskList",
+        "TaskOutput",
+        "TaskStop",
+        "TaskUpdate",
+        "WebFetch",
+        "WebSearch",
+        "Workflow",
+        "Write"
+      ],
+      "skills": [
+        "doctor"
+      ],
+      "mcp_servers": [],
+      "claude_code_version": "2.1.267",
+      "apiKeySource": "ANTHROPIC_API_KEY"
+    },
+    {
+      "type": "result",
+      "subtype": "success",
+      "is_error": true,
+      "total_cost_usd": 0,
+      "num_turns": 1
+    },
+    {
+      "type": "exception",
+      "name": "Error",
+      "message": "Claude Code returned an error result: API Error: Connection refused — a firewall or proxy may be blocking it (ConnectionRefused)"
+    }
+  ],
+  "markers": [
+    {
+      "source": "flag",
+      "value": "flag"
+    }
+  ]
+}

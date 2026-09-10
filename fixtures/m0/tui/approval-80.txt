@@ -1,0 +1,19 @@
+  (\/)(o,,o)(\/) miniclaw
+
+  Good evening, there / v0.1.0
+  v runtime  ready / fixture (no live connection)
+
+  +--------------------------------------------------------------------------+
+  | ? Approval needed / Write                                                |
+  | Write a summary to notes.md                                              |
+  | A file write needs your permission.                                      |
+  |  enter  deny   a  once   s  session                                      |
+  | Default is deny. Approval requires an explicit a or s.                   |
+  +--------------------------------------------------------------------------+
+  +--------------------------------------------------------------------------+
+  | >   Ask your agent anything...                                           |
+  +--------------------------------------------------------------------------+
+  default model / usage - / cost -
+  enter send / alt+enter newline / esc stop / ctrl+c exit / /help
+  workspace  /fixture/workspace
+  log        /fixture/events.jsonl

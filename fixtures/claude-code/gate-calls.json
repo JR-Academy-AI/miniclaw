@@ -1,0 +1,40 @@
+[
+  {
+    "at": "hook",
+    "tool": "Bash",
+    "toolUseId": "toolu_017ZUxdj8Q5mzxmYPdKRxgik",
+    "verdict": "deny"
+  },
+  {
+    "at": "hook",
+    "tool": "Bash",
+    "toolUseId": "toolu_01SBaBu6BsNVCJu2swGzQFTc",
+    "verdict": "allow"
+  },
+  {
+    "at": "hook",
+    "tool": "Read",
+    "toolUseId": "toolu_01JNtjduQgcxT1kXVYGr62WJ",
+    "verdict": "ask"
+  },
+  {
+    "at": "canUseTool",
+    "tool": "Read",
+    "toolUseId": "toolu_01JNtjduQgcxT1kXVYGr62WJ",
+    "allow": true,
+    "decisionReason": "spike ask"
+  },
+  {
+    "at": "hook",
+    "tool": "Write",
+    "toolUseId": "toolu_01TYGntgstTSYf2riFK6qHy1",
+    "verdict": "ask"
+  },
+  {
+    "at": "canUseTool",
+    "tool": "Write",
+    "toolUseId": "toolu_01TYGntgstTSYf2riFK6qHy1",
+    "allow": false,
+    "decisionReason": "spike ask"
+  }
+]

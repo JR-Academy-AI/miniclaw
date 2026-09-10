@@ -1,0 +1,51 @@
+{
+  "verifiedAt": "2026-09-10T11:52:54.763Z",
+  "source": "existing real SDK fixture replay",
+  "engineVersion": "2.1.267",
+  "assertions": [
+    "four tool calls each have exactly one hook and result",
+    "hook deny prevents Bash; hook allow executes Bash",
+    "hook ask reaches canUseTool for Read and Write",
+    "canUseTool allows Read and denies Write",
+    "explicit hook timeout prevents execution",
+    "75-second approval and hook waits complete",
+    "pending hook interruption rejects tool; next turn succeeds"
+  ],
+  "snapshots": [
+    {
+      "file": "fixtures/claude-code/spike/spike.mjs",
+      "bytes": 11461,
+      "sha256": "3a1fa33378e77f121ea43149b25cb1d41cec7d7801d36f473a1bbdf38923449c"
+    },
+    {
+      "file": "fixtures/claude-code/gate.jsonl",
+      "bytes": 76594,
+      "sha256": "47a60359be88fc40d2992dfcc9e64c6a7016c27b3d8816fa07ba1b8e3f12dbfa"
+    },
+    {
+      "file": "fixtures/claude-code/gate-calls.json",
+      "bytes": 798,
+      "sha256": "de05aeaebd8b7e024f40de84482f29d9fe6a557ad8769350f970499c6300a0c9"
+    },
+    {
+      "file": "fixtures/claude-code/hook-timeout-3-8000.jsonl",
+      "bytes": 28414,
+      "sha256": "e5e8a1df8352c6f49568fbdc8671c64703c0baaf2529991a80e07b5cf86382f0"
+    },
+    {
+      "file": "fixtures/claude-code/ask-wait-75000.jsonl",
+      "bytes": 20987,
+      "sha256": "e0154f55e2cec3b82cd5074caa4f584e6ef4b7d12583c72c94f379aa92c4cebe"
+    },
+    {
+      "file": "fixtures/claude-code/hook-timeout-default-75000.jsonl",
+      "bytes": 19816,
+      "sha256": "c6b34d0cafd04f5c3c73b7be5943c3429a79e786671b79a9e8a1606d947759dc"
+    },
+    {
+      "file": "fixtures/claude-code/interrupt-hook.jsonl",
+      "bytes": 22244,
+      "sha256": "2a86d5bb0bb749ab0cfb7aa8c6283ef1848a3f5870146a19028ad6fb9a969834"
+    }
+  ]
+}

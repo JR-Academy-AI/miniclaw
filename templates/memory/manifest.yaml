@@ -1,0 +1,201 @@
+# miniclaw memory template manifest
+# This file defines the memory schema shared by every miniclaw user.
+# On first login, miniclaw copies templates/memory/ to
+#   ~/.miniclaw/users/<user_id>/memory/
+# and fills instance placeholders ({{user_id}}, {{created_at}}, {{template_version}}).
+
+template: miniclaw-memory
+template_version: 0.3.0
+schema_version: 1
+
+# Files that document the template itself and are not copied into user instances.
+instantiate_exclude:
+  - README.md
+
+# ---------------------------------------------------------------------------
+# Tiers — from hottest (always in context) to coldest (search only)
+# ---------------------------------------------------------------------------
+tiers:
+  - id: L0
+    name: core
+    path: core/
+    load: always              # injected into every session / run
+    budget_tokens: 1500
+
+  - id: L1
+    name: working
+    path: null                # the runtime's context window + current Run state; not persisted here
+    load: session
+
+  - id: L2
+    name: short-term
+    path: short-term/
+    load: recent              # summaries of the last N days are injected
+    recent_days: 3
+    retention_days: 14        # daily logs older than this are rolled up into weekly, then archived
+    budget_tokens: 2000
+
+  - id: L3
+    name: long-term
+    path: long-term/
+    load: index+on-demand     # INDEX.md is injected; entries are read when relevant
+    index_budget_tokens: 1500
+
+  - id: L4
+    name: archive
+    path: archive/
+    load: search-only         # never injected; retrieved by explicit search
+
+# ---------------------------------------------------------------------------
+# Long-term domains — the "User OS"
+# kind:
+#   singleton   fixed set of files, one per aspect
+#   rolling     living document continuously rewritten; stale items roll out
+#   collection  one file per entity, created from _template.md
+# ---------------------------------------------------------------------------
+domains:
+  profile:
+    path: long-term/profile/
+    kind: singleton
+    files: [identity.md, preferences.md, goals.md]
+
+  agenda:
+    path: long-term/agenda/
+    kind: rolling
+    files: [agenda.md, todos.md]
+    rollout: past events move to meetings/ (if a meeting) or archive/agenda/
+
+  meetings:
+    path: long-term/meetings/
+    kind: collection
+    filename: "{date}-{slug}.md"
+    template: _template.md
+    archive_after_days: 180
+
+  companies:
+    path: long-term/companies/
+    kind: collection
+    filename: "{slug}.md"
+    template: _template.md
+
+  projects:
+    path: long-term/projects/
+    kind: collection
+    filename: "{slug}.md"
+    template: _template.md
+    archive_when: status in [done, archived] for 30 days
+
+  people:
+    path: long-term/people/
+    kind: collection
+    filename: "{slug}.md"
+    template: _template.md
+
+  knowledge:
+    path: long-term/knowledge/
+    kind: collection
+    filename: "{slug}.md"
+    template: _template.md
+
+# ---------------------------------------------------------------------------
+# Self-update
+# ---------------------------------------------------------------------------
+consolidation:
+  triggers:
+    - session_end
+    - schedule: "0 3 * * *"   # nightly, via miniclaw's own scheduler
+  model_profile: memory        # which model profile runs consolidation
+  staging: meta/staging/       # the consolidator writes proposed changes here; miniclaw evaluates and applies them
+  auto_apply: [add, update, merge, rollout]
+  require_review:
+    - delete
+    - supersede_explicit       # overriding something the user explicitly said
+    - identity_change          # changes to profile/identity.md
+    - conflict                 # two sources disagree and confidence is not decisive
+    - sensitivity: private     # anything marked private or above
+  changelog: meta/changelog.md
+
+# ---------------------------------------------------------------------------
+# Promotion — decides which short-term candidates are worth long-term memory (docs/MEMORY-PROMOTION.md)
+# Runs before consolidation; the consolidator only reads promoted candidates.
+# Scoring rules (dimensions, weights, thresholds, user rules, derived criteria) are per user, in the rubric file.
+# ---------------------------------------------------------------------------
+promotion:
+  rubric: meta/rubric.md       # user-owned; the consolidator and the scorer never write it
+  model_profile: memory-judge
+  batch_size: 30               # candidates per scoring Run
+  on_error: hold               # a failed scoring Run never promotes and never discards
+  durability_zero_cap: hold    # candidates true only for today can at most be held, unless an `always` rule matches
+  recurrence:
+    bonus_per_day: 10          # same fact captured again on another day
+    max_bonus: 20
+  ask:
+    max_per_day: 5             # highest scores first; the rest of the ask band is held
+    expire_days: 3             # unanswered asks fall back to hold
+  hold_max_days: 14            # still held after this → rolls out with the daily logs
+  rubric_builder:
+    rebuild_on: [profile, core_current_focus, active_projects]
+  suggestions:                 # proposed user rules, added only if the user accepts
+    min_consistent_decisions: 3
+    window_days: 30
+    cooldown_days: 90          # a rejected suggestion is not proposed again for this long
+
+# ---------------------------------------------------------------------------
+# Eval — quality gate and health checks for memory updates (docs/MEMORY-EVAL.md)
+# Eval can only tighten auto_apply / require_review above, never loosen them.
+# ---------------------------------------------------------------------------
+eval:
+  log: meta/eval-log.md
+  log_retention_days: 90         # older records move to archive/meta/
+
+  gate:
+    on_error: warn               # a failing check or judge never lets a change through silently
+    # Deterministic checks. Severity when the check fails:
+    #   drop   discard the change and redact; the offending text is never copied anywhere
+    #   block  do not apply; list it in the review queue as blocked (default: reject)
+    #   warn   send it to the review queue
+    checks:
+      schema: block
+      provenance: block
+      never_store: drop
+      secret_leak: drop
+      no_silent_drop: block
+      standing_instruction: block
+      links: warn
+      duplicate: warn
+      churn: warn
+      budget: warn
+    churn_max_per_day: 3
+    duplicate_similarity: 0.9
+    judge:                       # LLM checks; the judge can only warn, never block
+      model_profile: memory-judge   # separate from the consolidator; never sees its reasoning
+      run_on: auto_apply            # only changes that would otherwise skip human review
+      checks: [grounded, target, op, conflict, sensitivity]   # "worth keeping?" is decided earlier, by promotion
+
+  post_apply:
+    rollback_on: [schema, secret_leak]   # undo the whole consolidation if the applied result fails these
+
+  health:
+    schedule: "0 4 * * 1"        # weekly, after Monday's nightly consolidation; also /memory health
+    report: meta/health.md
+    trend_periods: 8
+    stale_after_days:
+      projects: 30               # active projects with no update
+    alerts:                      # exceeding any of these shows a notice and a suggestion; config is never changed automatically
+      undo_rate: 0.10
+      review_reject_rate: 0.30
+      eval_false_positive_rate: 0.50
+      inbox_backlog_days: 7
+
+# ---------------------------------------------------------------------------
+# Privacy
+# ---------------------------------------------------------------------------
+privacy:
+  sensitivity_levels: [normal, private, secret]
+  inject_levels: [normal, private]   # secret is never injected into prompts
+  never_store:
+    - passwords
+    - api_keys_and_tokens
+    - payment_card_numbers
+    - government_id_numbers
+    - one_time_codes

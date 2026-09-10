@@ -1,0 +1,11 @@
+# Instance state — written by miniclaw, not by hand.
+user_id: {{user_id}}
+template_version: {{template_version}}
+schema_version: 1
+created_at: {{created_at}}
+onboarding_completed: false
+last_consolidated_at: null
+last_rollout_at: null
+last_health_check_at: null
+last_promotion_at: null
+last_rubric_built_at: null
